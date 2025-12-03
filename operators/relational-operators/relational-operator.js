@@ -1,0 +1,10 @@
+// used for compairing 2 objects and return a boolean
+
+var num1 = 10
+var num2 = 20
+
+console.log(num1>num2); //10>20 - false
+console.log(num1<num2); // true
+console.log(num1==num2); // false
+console.log(num1!=num2); // 10 != 20 -true
+// decision making
