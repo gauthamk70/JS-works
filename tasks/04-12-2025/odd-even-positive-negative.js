@@ -11,9 +11,7 @@ if(num>0){
     else{
         console.log("poitive and odd");
         
-    }
-    
-    
+    }    
 }
 
 else if(num<0){
@@ -24,8 +22,7 @@ else if(num<0){
     else{
         console.log("negative and odd");
         
-    }
-    
+    }   
 }
 else if(num==0){
     console.log("zero and even");

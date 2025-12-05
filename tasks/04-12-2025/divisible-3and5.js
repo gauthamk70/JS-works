@@ -1,6 +1,6 @@
 // check if the number is divisible by both 3 and 5
 
-var num = 33
+var num = 30
 
 if(num%3==0 && num%5==0){
     console.log("the number is divisible by both 3 and 5");
