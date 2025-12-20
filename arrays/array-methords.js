@@ -21,8 +21,16 @@ var foods = ["dosa","rice","chapathi","rice"]
 // var isExist = foods.includes("dosa")
 // console.log(isExist);
 
-var portion = foods.slice(0,3)
-console.log(portion);
+// var portion = foods.slice(0,3)
+// console.log(portion);
+
+// foods.splice(1,2)     //deletion start, delete count
+// console.log(foods);
+
+foods.splice(1,1,"alfarm","kfc")
+console.log(foods);
+
+
 
 
 
