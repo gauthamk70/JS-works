@@ -1,5 +1,5 @@
 // Write a program to rotate an array to the right by 1 position.
-var arr = [2,3,1]
+var arr = [1,2,3,4,5]
 var rotated = []
 rotated.push(arr[arr.length-1])
 var left = 0
