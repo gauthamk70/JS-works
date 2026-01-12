@@ -63,53 +63,144 @@ var jobs = [
 ];
 
 // 1. Create an array of job titles from the jobs dataset.
-var jobTitles = jobs.map(j=>j.title)
-// console.log("Job titles:",jobTitles);
+var jobTitles = jobs.map(j => j.title)
+console.log("Job titles:", jobTitles);
 
 // 2. Create an array of company names in uppercase.
-var companyNamesUpper = jobs.map(j=>j.companyName.toUpperCase())
-// console.log("array of company names in uppercase:",companyNamesUpper);
+var companyNamesUpper = jobs.map(j => j.companyName.toUpperCase())
+console.log("array of company names in uppercase:", companyNamesUpper);
 
 // 3. Create an array showing job title with company name in the format: Frontend Developer - TCS.
-var titleAndCompany = jobs.map(j=>[j.title,j.companyName])
-// console.log("job title with company name:",titleAndCompany);
+var titleAndCompany = jobs.map(j => [j.title, j.companyName])
+console.log("job title with company name:", titleAndCompany);
 
 // 4. Create an array of objects containing id and role only.
-var idAndRole = jobs.map(j=>[j.id,j.role])
-// console.log("array of objects containing id and role only:",idAndRole);
+var idAndRole = jobs.map(j => [j.id, j.role])
+console.log("array of objects containing id and role only:", idAndRole);
 
 // 5. Create an array that shows only the number of vacancies for each job.
-var vacancies = jobs.map(j=>[j.title,j.noOfVacancy])
-// console.log("number of vacancies for each job:",vacancies);
+var vacancies = jobs.map(j => [j.title, j.noOfVacancy])
+console.log("number of vacancies for each job:", vacancies);
 
 // 6. List all jobs where the role is "Developer".
-var developerRole = jobs.filter(j=>j.role=="Developer").map(j=>[j.title,j.role])
-// console.log("jobs where the role is Developer:",developerRole);
+var developerRole = jobs.filter(j => j.role == "Developer").map(j => [j.title, j.role])
+console.log("jobs where the role is Developer:", developerRole);
 
 // 7. List all jobs with more than 4 vacancies.
-var vacancyGt4 = jobs.filter(j=>j.noOfVacancy>4).map(j=>[j.title,j.noOfVacancy])
-// console.log("all jobs with more than 4 vacancies:",vacancyGt4);
+var vacancyGt4 = jobs.filter(j => j.noOfVacancy > 4).map(j => [j.title, j.noOfVacancy])
+console.log("all jobs with more than 4 vacancies:", vacancyGt4);
 
 // 8. Find all jobs that require the skill "Python".
-var pythonRequired = jobs.filter(j=>j.skills.includes("Python")).map(j=>[j.title,j.skills])
-// console.log("jobs that require the skill Python:",pythonRequired);
+var pythonRequired = jobs.filter(j => j.skills.includes("Python")).map(j => [j.title, j.skills])
+console.log("jobs that require the skill Python:", pythonRequired);
 
 // 9. List all jobs from the company "Infosys".
-var infosysJobs =job
+var infosysJobs = jobs.filter(j => j.companyName == "Infosys").map(j => [j.title, j.companyName])
+console.log('List all jobs from the company "Infosys":', infosysJobs);
+
 
 // 10. Find all jobs where the skills array length is greater than 3.
+var skillsGt3 = jobs.filter(j => j.skills.length > 3).map(j => [j.title, j.skills])
+console.log("jobs where the skills array length is greater than 3:", skillsGt3);
+
 // 11. List all Manager-level jobs.
+var managerlevelJobs = jobs.filter(j => j.role == 'Manager').map(j => [j.title, j.role])
+console.log("all Manager-level jobs:", managerlevelJobs);
+
 // 12. Find all jobs whose title contains the word "Engineer".
+var titleHasEngineer = jobs.filter(j => j.title.includes('Engineer')).map(j => j.title)
+console.log('jobs whose title contains the word "Engineer":', titleHasEngineer);
+
 // 13. Find the total number of vacancies across all jobs.
+var totalVacancies = jobs.reduce((sum, j) => sum + j.noOfVacancy, 0)
+console.log("total number of vacancies across all jobs:", totalVacancies);
+
 // 14. Find the total number of Developer roles.
+var totalDeveloperRole = jobs.filter(j => j.role == 'Developer').length
+console.log("total number of Developer roles:", totalDeveloperRole);
+
 // 15. Create an object that shows total vacancies by role. (Example: { Developer: 25, Manager: 10 })
+var roleVaccacySummary = {}
+for (let j of jobs) {
+    let role = j.role
+    let vacancy = j.noOfVacancy
+    if (role in roleVaccacySummary) {
+        roleVaccacySummary[role] += vacancy
+    }
+    else {
+        roleVaccacySummary[role] = vacancy
+    }
+}
+console.log(" total vacancies by role:", roleVaccacySummary);
+
 // 16. Find the company with the highest total vacancies.
+var companyVacancySummary = {}
+for (let j of jobs) {
+    let company = j.companyName
+    let vacancy = j.noOfVacancy
+    if (company in companyVacancySummary) {
+        companyVacancySummary[company] += vacancy
+    }
+    else {
+        companyVacancySummary[company] = vacancy
+    }
+}
+// console.log(companyVacancySummary);
+var companyWithHighestvacacy = Object.entries(companyVacancySummary).reduce((c1, c2) => c1[1] > c2[1] ? c1 : c2)
+console.log("company with the highest total vacancies", companyWithHighestvacacy);
+
 // 17. Count how many jobs are available per company.
+var companyJobSummary = {}
+for (let j of jobs) {
+    let company = j.companyName
+
+    if (company in companyJobSummary) {
+        companyJobSummary[company] += 1
+    }
+    else {
+        companyJobSummary[company] = 1
+    }
+}
+console.log("jobs are available per company:", companyJobSummary);
+
 // 18. Create an object that groups jobs by role.
+var roleJobSummary = {}
+for (let j of jobs) {
+    let jobtitle = j.title
+    let role = j.role
+    if (role in roleJobSummary) {
+        roleJobSummary[role].push(jobtitle)
+    }
+    else {
+        roleJobSummary[role] = [jobtitle]
+    }
+}
+console.log("jobs by role:", roleJobSummary);
+
 // 19. Sort jobs by number of vacancies (ascending order).
+var sortedAscending = jobs.sort((j1, j2) => j1.noOfVacancy - j2.noOfVacancy).map(j => [j.title, j.noOfVacancy])
+console.log("Sort jobs by number of vacancies (ascending order):", sortedAscending);
+
 // 20. Sort jobs by number of vacancies (descending order).
+var sortedDescending = jobs.sort((j1, j2) => j2.noOfVacancy - j1.noOfVacancy).map(j => [j.title, j.noOfVacancy])
+console.log('Sort jobs by number of vacancies (descending order):', sortedDescending);
+
 // 21. Sort jobs by job title alphabetically.
+var sortedAplhabetically = jobs.sort((j1, j2) => j1.title.localeCompare(j2.title)).map(j => j.title)
+console.log(sortedAplhabetically);
+
 // 22. Sort jobs by company name in reverse alphabetical order.
+var sortedReverseCompany = jobs.sort((j1, j2) => j2.companyName.localeCompare(j1.companyName)).map(j => j.companyName)
+console.log("company name in reverse alphabetical order", sortedReverseCompany);
+
 // 23. Check if any job requires the skill "Django".
+var checkDjangoSkill = jobs.some(j => j.skills.includes('Django'))
+console.log("if any job requires the skill Django:", checkDjangoSkill);
+
 // 24. Check if all jobs have at least 1 vacancy.
+var allJobsHaveVacancy = jobs.every(j => j.noOfVacancy >= 1)
+console.log("All jobs have vacancy:", allJobsHaveVacancy);
+
 // 25. Find the first job where the role is "Manager".
+var managerJob = jobs.find(j => j.role == 'Manager')
+console.log("the first job where the role is Manager:", managerJob);

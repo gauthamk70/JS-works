@@ -2,7 +2,7 @@
 //   * *
 //  *   *
 // * * * *
-var n =5
+var n =10
 for (let r = 1; r <= n; r++) {
     let pattern = ""
     for (let c = 1; c <= (n*2-1); c++) {

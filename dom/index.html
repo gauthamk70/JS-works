@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="head">DOM Manipulation</h1>
+    <ul>
+        <li>Document.getElementById()</li>
+        <li class="cls">Document.getElementByClassName()</li>
+        <li>Document.getElementByTagName()</li>
+        <li class="cls">Document.querySelector()</li>
+        <li>Document.querySelectorAll()</li>
+     
+    </ul>
+    <button class="btn" onclick="btnClick()">submit</button>
+
+    <script>
+        // get element by ID
+        const documentID = document.getElementById('head')
+        console.log(documentID);
+        documentID.style.color='red'
+
+        // // get element by Class
+        // const documentClass = document.getElementsByClassName('cls')
+        // console.log(documentClass);
+
+        // // convert html collection to array
+        // console.log(Array.from(documentClass).map(item=>item.style.color='green'));
+        
+        // get elemnets by tag name
+        const documentTag = document.getElementsByTagName('li')
+        console.log(documentTag);
+
+        // convert html to array
+        console.log([...documentTag]);
+        console.log([...documentTag].map(item=>item.style.color='blue'))
+
+        // document.querySelector()
+        const query = document.querySelector('li')
+        console.log(query);
+        
+         // document.querySelectorAll()
+        const queryAll = document.querySelectorAll('li')
+        console.log(queryAll);
+
+        // document.querySelector() id
+        const queryID = document.querySelector('#head')
+        console.log(queryID);
+        
+         // document.querySelector() class
+        const queryClass = document.querySelectorAll('.cls')
+        console.log(queryClass);
+
+         const querybtn = document.querySelector('.btn')
+        console.log(querybtn);
+
+        function btnClick(){
+            alert ('butten clicked')
+        }
+
+        
+        
+        
+        
+        
+    </script>
+    
+</body>
+</html>

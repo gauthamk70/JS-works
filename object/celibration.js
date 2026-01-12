@@ -14,7 +14,7 @@ var expenses = {
     sreelakshmi: 0
 }
 
-// unpaid students
+// unpaid students 
 var unpaidStudents = Object.entries(expenses).filter(s => s[1] == 0)
 console.log(unpaidStudents);
 
