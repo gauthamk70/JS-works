@@ -299,44 +299,96 @@ const films = [
 
 // Q1. Create a new array that contains only the film name and year of release for each film.
 // 	Output format: { name, yearOfRelease }
-var filmNameandYear = films.map(f=>({name:f.name,Year:f.yearOfRelease}))
-// console.log(filmNameandYear);
+var filmNameandYear = films.map(f => ({ name: f.name, Year: f.yearOfRelease }))
+console.log(filmNameandYear);
 
 // Q2. Add a new property called isRecent to each film.
 // Set it to true if the film was released after 2015, otherwise false.
-var Recentfilms = films.map(f=>({
-    ...f,
-    isRecent:f.yearOfRelease>2105
+var Recentfilms = films.map(f => ({
+  ...f,
+  isRecent: f.yearOfRelease > 2015
 
 }))
-// console.log(Recentfilms);
+console.log(Recentfilms);
 
 // Q3. Create a single array containing the names of all actors from every film.
-var actorName = [...new Set(films.map(f=>f.actors.map(a=>a.name)).flat())]
-// console.log(actorName);
+var actorName = [...new Set(films.map(f => f.actors.map(a => a.name)).flat())]
+console.log(actorName);
 
 // Q4. Get all films that belong to the Action category.
-var actionFilms = films.filter(f=>f.category=='Action').map(f=>[f.name,f.category])
-// console.log(actionFilms);
+var actionFilms = films.filter(f => f.category == 'Action').map(f => [f.name, f.category])
+console.log(actionFilms);
 
 // Q5. Find all films that were released before 2010.
+var filmsBefore2010 = films.filter(f => f.yearOfRelease < 2010).map(f => [f.name, f.yearOfRelease])
+console.log(filmsBefore2010);
+
 
 // Q6. Get all Malayalam films that are marked as Hit.
+var malayalamHitMovies = films.filter(f => f.language == 'Malayalam' && f.status == 'Hit').map(f => f.name)
+console.log(malayalamHitMovies);
+
 // Q7. Find all films that have more than one actor.
+var filmsWithMorethan1Actor = films.filter(f => f.actors.length > 1).map(f => f.name)
+console.log(filmsWithMorethan1Actor);
+
 // Q8. Create an object that shows the total number of films per language.
 
-// Example output:
+// Example output:s
 
 // 	{
 //  		 English: 10,
 //   		 Malayalam: 5,
 //   		 Hindi: 7
 // 	}
+var languageSummary = {}
+for(let f of films){
+  let language=f.language
+  if(language in languageSummary){
+    languageSummary[language]+=1
+  }
+  else{
+    languageSummary[language]=1
+  }
+}
+console.log(languageSummary);
+
 
 // Q9. Find the oldest film based on the year of release.
+var oldestFilm = films.reduce((f1,f2)=>f1.yearOfRelease>f2.yearOfRelease?f2:f1)
+console.log(oldestFilm);
+
 // Q10. Count how many films are Hits and how many are Flops.
+var statusSummary = {}
+for(let f of films){
+  let status = f.status
+  if(status in statusSummary){
+    statusSummary[status]+=1
+  }
+  else{
+    statusSummary[status]=1
+  }
+}
+console.log(statusSummary);
+
 // Q11. Arrange the films from newest to oldest based on the release year.
+var sortMoviesRelease = films.sort((f1,f2)=>f2.yearOfRelease-f1.yearOfRelease).map(f=>[f.name,f.yearOfRelease])
+console.log(sortMoviesRelease);
+
 // Q12. Arrange the films in alphabetical order by film name.
+var sortAlphabetical = films.sort((f1,f2)=>f1.name.localeCompare(f2.name)).map(f=>f.name)
+console.log(sortAlphabetical);
+
+
 // Q13. Check whether at least one film was released after 2020.
+var isNewFilm = films.some(f=>f.yearOfRelease>2020)
+console.log(isNewFilm);
+
 // Q14. Find the first Malayalam film in the dataset.
+var findMalayalam = films.find(f=>f.language=='Malayalam')
+console.log(findMalayalam);
+
 // Q15. Check whether every film in the dataset has at least one actor.
+var isMoreActor = films.every(f=>f.actors.length>0)
+console.log(isMoreActor);
+

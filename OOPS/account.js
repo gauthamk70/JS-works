@@ -7,7 +7,7 @@ db={
 //1 create a function for validate account number. To validate account check
 //if account number in db return true otherwise return false
 function validateAcNo(acno){
-    return acno in db ? true:false 
+    return acno in db ? true:false  
 }
 // console.log(validateAcNo(1000));
 

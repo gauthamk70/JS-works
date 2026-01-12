@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>DOM getElementByTagName()</h1>
+    <p>This is the first paragraph</p>
+    <p>This is the second paragraph</p>
+    <p>This is the third paragraph</p>
+    <button>Use tag</button>
+    <script>
+        document.getElementsByTagName('h1')[0].style.color='cyan'
+        document.getElementsByTagName('button')[0].onclick=function(){
+            [...document.getElementsByTagName('p')].forEach(p => {
+                p.style.color='blue'
+                p.style.backgroundColor='pink'
+                
+            })
+        }
+    </script>
+    
+</body>
+</html>
